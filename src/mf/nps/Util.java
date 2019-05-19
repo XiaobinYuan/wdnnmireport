@@ -133,9 +133,6 @@ public class Util {
         }
 
         StringBuilder sb=new StringBuilder();
-
-
-
         for (Map.Entry<String,Bo> entry : objmap.entrySet()) {
             Bo bo=entry.getValue();
             HashMap<String ,Long> inmap=bo.getInmap();
@@ -169,11 +166,8 @@ public class Util {
             sb.append("#");
         }
 
-
-
         String str=sb.toString().replaceAll(",\"}","\"}").replaceAll("],}","]}");
         return str.substring(0,str.length()-1);
-
     }
 
 //    public static String initTree(){
@@ -263,7 +257,30 @@ public class Util {
         }
         return conn;
     }
+    public static List<String> getL1AllNodes(String L1GroupName){
+        ArrayList<String> allNodes = new ArrayList<>();
+        allNodes.add("testNode");
+        return null;
+    }
+    public static String level1GroupAllNodesCpuUtinization(String L1, String start){
+        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]='10.197.241.21' and f.[CPU 1min Utilization (avg)]!=null and f.Day>='2019-05-06'";
+        try{
+            String utilization = null;
+            Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = null;
 
+            rs=stmt.executeQuery(sql);
+            while ( rs.next()){
+                Float cpuUtilization = rs.getFloat(1);
+                utilization = cpuUtilization.toString();
+            }
+            return utilization;
+        }catch (Exception e){
+            e.printStackTrace();
+            return "error";
+        }
+        }
 
 //    public static String getInterfaceThroughput(String interfaceAlias){
 //        try {
@@ -278,87 +295,91 @@ public class Util {
 //
 //        return "";
 //    }
-//    public static void initMaps(){
-//        String gourpL1="select id from nms_node_groups where notes='L1'";
-//        String gourpL2="select id from nms_node_groups where notes ='L2' ";
-//        String gourpL3="select id from nms_node_groups where notes='L3'";
-//        String nms_node_group_hierarchy_sql="select child,parent from nms_node_group_hierarchy";
-//        String nodeL3="select grp,node from nms_nodegrp_assn where direct=true ";
-//        try {
-//
-//            Connection conn=getPostgressConnection();
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = null;
-//
-//            rs=stmt.executeQuery(nodeL3);
-//            while ( rs.next() ) {
-//                List<Long> list=L3Nodemap.get(rs.getLong(1));
-//                if(list==null)
-//                    list=new ArrayList<Long>();
-//                list.add(rs.getLong(2));
-//                L3Nodemap.put(rs.getLong(1),list);
-//            }
-//
-//            rs=stmt.executeQuery(gourpL3);
-//            List<Long> l3group=new ArrayList<>();
-//            while ( rs.next() ) {
-//                l3group.add(rs.getLong(1));
-//            }
-//            rs=stmt.executeQuery(gourpL1);
-//            List<Long> l1group=new ArrayList<>();
-//            while ( rs.next() ) {
-//                long parentid=rs.getLong(1);
-//                l1group.add(parentid);
-//
-//            }
-//            rs=stmt.executeQuery(gourpL2);
-//            List<Long> l2group=new ArrayList<>();
-//            while ( rs.next() ) {
-//                l2group.add(rs.getLong(1));
-//
-//            }
-//            rs=stmt.executeQuery("select id,name  from nms_node_groups");
-//            while ( rs.next() ) {
-//                String gname=rs.getString(2);
-//                long grupid=rs.getLong(1);
-//
-//                if(!gname.contains("Island"))
-//                    groupNamemap.put(grupid,gname);
-//            }
-//            rs= stmt.executeQuery(nms_node_group_hierarchy_sql);
-//            while ( rs.next() ) {
-//
-//                long parent=rs.getLong(2);
-//                long child=rs.getLong(1);
-//                if(l1group.contains(parent)){
-//                    List<Long> list=L1L2Mmap.get(parent);
-//                    if(list==null)
-//                        list=new ArrayList<Long>();
-//                    list.add(child);
-//                    L1L2Mmap.put(parent,list);
-//
-//                }
-//                if(l2group.contains(parent)){
-//                    List<Long> list=L2L3Map.get(parent);
-//                    if(list==null)
-//                        list=new ArrayList<Long>();
-//                    list.add(child);
-//                    L2L3Map.put(parent,list);
-//                }
-////                ParentChildgroup.add(parent+"@"+child);
-//                childParent.put(child,parent);
-//            }
-//            rs= stmt.executeQuery("select id ,name from nms_node");
-//            while ( rs.next() ) {
-//
-//                id_node_map.put(rs.getLong(1),rs.getString(2));
-//            }
-//            rs.close();
-//            stmt.close();
-//            conn.close();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public static void initMaps(){
+        String gourpL1="select id from nms_node_groups where notes='L1'";
+        String gourpL2="select id from nms_node_groups where notes ='L2' ";
+        String gourpL3="select id from nms_node_groups where notes='L3'";
+        String nms_node_group_hierarchy_sql="select child,parent from nms_node_group_hierarchy";
+        String nodeL3="select grp,node from nms_nodegrp_assn where direct=true ";
+        try {
+
+            Connection conn=getPostgressConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = null;
+
+            rs=stmt.executeQuery(nodeL3);
+            while ( rs.next() ) {
+                List<Long> list=L3Nodemap.get(rs.getLong(1));
+                if(list==null)
+                    list=new ArrayList<Long>();
+                list.add(rs.getLong(2));
+                L3Nodemap.put(rs.getLong(1),list);
+            }
+
+            rs=stmt.executeQuery(gourpL3);
+            List<Long> l3group=new ArrayList<>();
+            while ( rs.next() ) {
+                l3group.add(rs.getLong(1));
+            }
+            rs=stmt.executeQuery(gourpL1);
+            List<Long> l1group=new ArrayList<>();
+            while ( rs.next() ) {
+                long parentid=rs.getLong(1);
+                l1group.add(parentid);
+
+            }
+            rs=stmt.executeQuery(gourpL2);
+            List<Long> l2group=new ArrayList<>();
+            while ( rs.next() ) {
+                l2group.add(rs.getLong(1));
+
+            }
+            rs=stmt.executeQuery("select id,name  from nms_node_groups");
+            while ( rs.next() ) {
+                String gname=rs.getString(2);
+                long grupid=rs.getLong(1);
+
+                if(!gname.contains("Island"))
+                    groupNamemap.put(grupid,gname);
+            }
+            rs= stmt.executeQuery(nms_node_group_hierarchy_sql);
+            while ( rs.next() ) {
+
+                long parent=rs.getLong(2);
+                long child=rs.getLong(1);
+                if(l1group.contains(parent)){
+                    List<Long> list=L1L2Mmap.get(parent);
+                    if(list==null)
+                        list=new ArrayList<Long>();
+                    list.add(child);
+                    L1L2Mmap.put(parent,list);
+
+                }
+                if(l2group.contains(parent)){
+                    List<Long> list=L2L3Map.get(parent);
+                    if(list==null)
+                        list=new ArrayList<Long>();
+                    list.add(child);
+                    L2L3Map.put(parent,list);
+                }
+//                ParentChildgroup.add(parent+"@"+child);
+                childParent.put(child,parent);
+            }
+            rs= stmt.executeQuery("select id ,name from nms_node");
+            while ( rs.next() ) {
+
+                id_node_map.put(rs.getLong(1),rs.getString(2));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+            System.out.print(L1L2Mmap.get("4295063622")); //zhongdian jiankong
+//            System.out.println(L2L3Map.toString());
+//            System.out.println((L3Nodemap.toString()));
+//            System.out.println(groupNamemap.toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

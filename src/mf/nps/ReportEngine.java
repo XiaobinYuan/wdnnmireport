@@ -16,7 +16,7 @@ public class ReportEngine extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-//        Util.initMaps();
+        Util.initMaps();
         super.init();
     }
 
@@ -31,22 +31,18 @@ public class ReportEngine extends HttpServlet {
         String start=req.getParameter("start");
         String end=req.getParameter("end");
 
-//        System.out.println(start);
-//        System.out.println(end);
-
-        if (reportId == 1){
-            out.write("yes");
+        if (reportId == 1){ // CPU
+            String utilization = Util.level1GroupAllNodesCpuUtinization("test", start);
+            out.write(utilization);
             out.flush();
         }
-        else if( reportId == 5 ){
+        else if( reportId == 5 ){ // Raw fiber
             String str= Util.getInterfaceThroughput(start,end);
 //          System.out.println(str);
             out.write(str);
             out.flush();
         }
         out.close();
-
-
     }
 
 }

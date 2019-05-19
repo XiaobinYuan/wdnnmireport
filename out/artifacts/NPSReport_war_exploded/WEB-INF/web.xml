@@ -15,6 +15,15 @@
         <url-pattern>/reportEngine</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>initMap</servlet-name>
+        <servlet-class>mf.nps.ThroughputServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>initMap</servlet-name>
+        <url-pattern>/initMap</url-pattern>
+    </servlet-mapping>
 
 
     <servlet>
