@@ -41,10 +41,22 @@ function changetime(){
         return;
     }
 
-    var day=document.getElementById("time").value
+    var day=document.getElementById("time").value;
     var strDate = GetDateStr(eval(day));
-    var end =  GetDateStr(-1);
-    chart5(strDate,end);
+    var end =  GetDateStr(-0);
+    id = document.getElementById("reportid").value;
+    if (id == 1){
+        chart1(strDate, end);
+    }
+    else if (id == 5){
+        chart5(strDate,end);
+    }
+}
+
+function chart1(strDate, end) { //CPU
+    $.get("reportEngine?reportid=1&start="+strDate+"&end="+end, function(data){
+    alert(data);
+});
 }
 	
 function chart5(strDate,end){
@@ -94,148 +106,10 @@ function chart5(strDate,end){
 				data: []
 			}]
 		});
-		
 
-	/*var chart2 = new Highcharts.Chart({
-			chart: {
-				renderTo: 'container2',
-				type: 'line',
-				// marginRight: 30,
-				// marginBottom: 25
-			},
-			title: {
-				text: "",
-				x: -20 //center
-			},
-			subtitle: {
-				text: '',
-				x: -20
-			},
-			xAxis: {
-				categories: [],
-			},
-			yAxis: {
-				title: {
-					text: ''
-				},
-				plotLines: [{
-					value: 0,
-					width: 1,
-					color: '#808080'
-				}]
-			},
-			tooltip: {
-				valueSuffix: ''
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			series: [{
-				name: 'Throughput Out (bps)',
-				data: []
-			}, {
-				name: 'Throughput In (bps)',
-				data: []
-			}]
-		});
-    var chart1 = new Highcharts.Chart({
-			chart: {
-				renderTo: 'container1',
-				type: 'line',
-				// marginRight: 30,
-				// marginBottom: 25
-			},
-			title: {
-				text: "",
-				x: -20 //center
-			},
-			subtitle: {
-				text: '',
-				x: -20
-			},
-			xAxis: {
-				categories: [],
-			},
-			yAxis: {
-				title: {
-					text: ''
-				},
-				plotLines: [{
-					value: 0,
-					width: 1,
-					color: '#808080'
-				}]
-			},
-			tooltip: {
-				valueSuffix: ''
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			series: [{
-				name: 'Throughput Out (bps)',
-				data: []
-			}, {
-				name: 'Throughput In (bps)',
-				data: []
-			}]
-		});
-    var chart3 = new Highcharts.Chart({
-			chart: {
-				renderTo: 'container3',
-				type: 'line',
-				// marginRight: 30,
-				// marginBottom: 25
-			},
-			title: {
-				text: "",
-				x: -20 //center
-			},
-			subtitle: {
-				text: '',
-				x: -20
-			},
-			xAxis: {
-				categories: [],
-			},
-			yAxis: {
-				title: {
-					text: ''
-				},
-				plotLines: [{
-					value: 0,
-					width: 1,
-					color: '#808080'
-				}]
-			},
-			tooltip: {
-				valueSuffix: ''
-			},
-			legend: {
-				layout: 'vertical',
-				align: 'right',
-				verticalAlign: 'middle',
-				borderWidth: 0
-			},
-			series: [{
-				name: 'Throughput Out (bps)',
-				data: []
-			}, {
-				name: 'Throughput In (bps)',
-				data: []
-			}]
-		});*/
-		
+	$.get("reportEngine?reportid=5&start="+strDate+"&end="+end, function(data){
 
-	$.get("inittree?start="+strDate+"&end="+end, function(data){
-
-		console.log(data)
+		//console.log(data)
 		var strs = data.split('#');
 		for(var i=0;i<strs.length;i++){
 			var json=JSON.parse(strs[i]);//json data  name,time,in,out
@@ -273,13 +147,9 @@ function chart5(strDate,end){
 			}
 		
 		}
-		
-		
-	
 	});
 
 }
-
 
         </script>
     <input type="hidden" name="reportid" id="reportid" value=""/>

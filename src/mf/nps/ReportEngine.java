@@ -25,17 +25,25 @@ public class ReportEngine extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
+        PrintWriter out = resp.getWriter();
 
+        int reportId = Integer.parseInt(req.getParameter("reportid"));
         String start=req.getParameter("start");
         String end=req.getParameter("end");
 
 //        System.out.println(start);
 //        System.out.println(end);
-        String str= Util.getInterfaceThroughput(start,end);
-        PrintWriter out = resp.getWriter();
-//        System.out.println(str);
-        out.write(str);
-        out.flush();
+
+        if (reportId == 1){
+            out.write("yes");
+            out.flush();
+        }
+        else if( reportId == 5 ){
+            String str= Util.getInterfaceThroughput(start,end);
+//          System.out.println(str);
+            out.write(str);
+            out.flush();
+        }
         out.close();
 
 

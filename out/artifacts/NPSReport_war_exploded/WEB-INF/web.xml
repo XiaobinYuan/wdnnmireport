@@ -6,13 +6,13 @@
            version="4.0">
 
     <servlet>
-        <servlet-name>inittree</servlet-name>
+        <servlet-name>reportEngine</servlet-name>
         <servlet-class>mf.nps.ReportEngine</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>inittree</servlet-name>
-        <url-pattern>/inittree</url-pattern>
+        <servlet-name>reportEngine</servlet-name>
+        <url-pattern>/reportEngine</url-pattern>
     </servlet-mapping>
 
 
