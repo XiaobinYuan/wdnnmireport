@@ -6,6 +6,16 @@
            version="4.0">
 
     <servlet>
+        <servlet-name>initMap</servlet-name>
+        <servlet-class>mf.nps.MapInitiator</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>initMap</servlet-name>
+        <url-pattern>/initMap</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
         <servlet-name>reportEngine</servlet-name>
         <servlet-class>mf.nps.ReportEngine</servlet-class>
     </servlet>
@@ -14,17 +24,6 @@
         <servlet-name>reportEngine</servlet-name>
         <url-pattern>/reportEngine</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-        <servlet-name>initMap</servlet-name>
-        <servlet-class>mf.nps.ThroughputServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>initMap</servlet-name>
-        <url-pattern>/initMap</url-pattern>
-    </servlet-mapping>
-
 
     <servlet>
         <servlet-name>throughput</servlet-name>

@@ -1,5 +1,6 @@
 package mf.nps;
 
+import com.sun.org.apache.bcel.internal.generic.L2I;
 import com.sybase.jdbcx.EedInfo;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
@@ -20,6 +21,7 @@ public class Util {
     public static HashMap<Long ,List<Long>> L3Nodemap=new HashMap<>();
     public static HashMap<Long,String> groupNamemap=new HashMap<>();
     public static HashMap<Long,String> id_node_map=new HashMap<>();
+    public static HashSet<String> zdjkL1AllNodeNames = new HashSet<>();
 
     static {
 //        try {
@@ -257,13 +259,48 @@ public class Util {
         }
         return conn;
     }
-    public static List<String> getL1AllNodes(String L1GroupName){
-        ArrayList<String> allNodes = new ArrayList<>();
-        allNodes.add("testNode");
-        return null;
+    public static Set<String> initL1AllNodeNames(Long L1GroupId){
+        System.out.println("L1GroupId: " + L1GroupId);
+        Set L2Ids = new HashSet(L1L2Mmap.get(L1GroupId));
+        System.out.println("L2Ids: " + L2Ids.toString());
+        HashSet<Long> L3Ids= new HashSet<>();
+        Iterator<Long> it = L2Ids.iterator();
+        while(it.hasNext()){
+            Long l2id = it.next();
+            List<Long> l2id_children = L2L3Map.get(l2id);
+            L3Ids.addAll(l2id_children);
+        }
+        System.out.println("L3Ids: " + L3Ids.toString());
+        HashSet<Long> allNodeIds = new HashSet<>();
+        Iterator<Long> it_l3 = L3Ids.iterator();
+        while(it_l3.hasNext()) {
+            Long l3id = it_l3.next();
+            System.out.println("Tyring to get node ids for " + l3id.toString());
+            Set l3idWithNode = L3Nodemap.keySet();
+            if (l3idWithNode.contains(l3id)){
+                List<Long> l3id_children = L3Nodemap.get(l3id);
+                System.out.println("Node ids for " + l3id.toString() + ": " + l3id_children.toString());
+                allNodeIds.addAll(l3id_children);
+                System.out.println("allNodeIds now is :" + allNodeIds.toString());
+            }
+        }
+        System.out.println("allNodeIds: " + allNodeIds.toString());
+        HashSet<String> allNodeNames = new HashSet<>();
+        Iterator<Long> it_nodeIds = allNodeIds.iterator();
+        while(it_nodeIds.hasNext()) {
+            Long nodeId = it_nodeIds.next();
+            String nodeName = id_node_map.get(nodeId);
+            allNodeNames.add(nodeName);
+        }
+        if (L1GroupId == 4295063622L){
+            zdjkL1AllNodeNames = allNodeNames;
+        }
+        System.out.println("All nodes: " + allNodeNames.toString());
+
+        return allNodeNames;
     }
     public static String level1GroupAllNodesCpuUtinization(String L1, String start){
-        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]='10.197.241.21' and f.[CPU 1min Utilization (avg)]!=null and f.Day>='2019-05-06'";
+        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]='10.197.241.21' and f.[CPU 1min Utilization (avg)]!=null and f.Day>='"+start+"'";
         try{
             String utilization = null;
             Connection connection = getConnection();
@@ -373,10 +410,12 @@ public class Util {
             rs.close();
             stmt.close();
             conn.close();
-            System.out.print(L1L2Mmap.get("4295063622")); //zhongdian jiankong
-//            System.out.println(L2L3Map.toString());
-//            System.out.println((L3Nodemap.toString()));
-//            System.out.println(groupNamemap.toString());
+//            System.out.println("zhongidanjiankongL1-L2: " + L1L2Mmap.get(4295063622L)); //zhongdian jiankong
+//            System.out.println("L1L2Map: " + L1L2Mmap.toString());
+//            System.out.println("l2l3map: " + L2L3Map.toString());
+//            System.out.println(("L3Nodemap: "+ L3Nodemap.toString()));
+//            System.out.println(("id_node_map: "+ id_node_map.toString()));
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

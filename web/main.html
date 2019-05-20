@@ -54,6 +54,7 @@ function changetime(){
 }
 
 function chart1(strDate, end) { //CPU
+    //alert(strDate);
     $.get("reportEngine?reportid=1&start="+strDate+"&end="+end, function(data){
     alert(data);
 });
