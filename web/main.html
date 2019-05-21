@@ -96,7 +96,7 @@ function chart5(strDate,end){
 		});
 		
 
-	/*var chart2 = new Highcharts.Chart({
+	var chart2 = new Highcharts.Chart({
 			chart: {
 				renderTo: 'container2',
 				type: 'line',
@@ -230,7 +230,7 @@ function chart5(strDate,end){
 				name: 'Throughput In (bps)',
 				data: []
 			}]
-		});*/
+		});
 		
 
 	$.get("inittree?start="+strDate+"&end="+end, function(data){
