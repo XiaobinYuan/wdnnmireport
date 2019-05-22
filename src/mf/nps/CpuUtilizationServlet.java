@@ -26,8 +26,10 @@ public class CpuUtilizationServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         String start=req.getParameter("start");
+        String id_string = req.getParameter("level1GroupId");
+        Long id_Long = Long.parseLong(id_string);
         //String end=req.getParameter("end");
-        String utilization = Util.level1GroupAllNodesCpuUtinization("test", start);
+        String utilization = Util.level1GroupAllNodesCpuUtilization(id_Long, start);
         out.write(utilization);
         out.flush();
         out.close();

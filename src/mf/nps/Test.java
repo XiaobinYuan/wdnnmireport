@@ -1,6 +1,7 @@
 package mf.nps;
 
-import java.util.*;
+//import java.util.*;
+import java.util.HashSet;
 
 public class Test {
 
@@ -25,10 +26,20 @@ public class Test {
 //        ht.addAll(list);
 //        System.out.print(ht.toString());
         Util.initMaps();
+        Util.initL1AllNodeNames(4295063622L);
+        String r = Util.level1GroupAllNodesCpuUtilization(4295063622L, "2019-05-15");
+        System.out.println(r);
+//        HashSet<String> ths = new HashSet<>();
+//        ths.add("a");
+//        ths.add("b");
+//        ths.add("C");
+//        for (String s : ths){
+//            System.out.println(s);
+//        }
 
 //        System.out.println(Util.initL1AllNodeNames(4301105449l));
 //        System.out.println(Util.getAllNodeInGroup1(4295063622l));
-        List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+        //List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
 
     }
 }

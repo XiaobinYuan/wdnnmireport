@@ -1,7 +1,7 @@
 package mf.nps;
 
 import com.sun.org.apache.bcel.internal.generic.L2I;
-import com.sybase.jdbcx.EedInfo;
+//import com.sybase.jdbcx.EedInfo;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import javax.naming.NamingException;
@@ -366,8 +366,8 @@ public class Util {
 
         return allNodeNames;
     }
-    public static String level1GroupAllNodesCpuUtinization(String L1, String start){
-        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]='10.197.241.21' and f.[CPU 1min Utilization (avg)]!=null and f.Day>='"+start+"'";
+    public static String getCpuAvg(String nodeName, String start){
+        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]="+"'"+nodeName+"'"+" and f.[CPU 1min Utilization (avg)]!=null and f.Day>='"+start+"'";
         try{
             String utilization = null;
             Connection connection = getConnection();
@@ -379,12 +379,24 @@ public class Util {
                 Float cpuUtilization = rs.getFloat(1);
                 utilization = cpuUtilization.toString();
             }
-            return utilization;
+            return nodeName + ":"+utilization.toString();
         }catch (Exception e){
             e.printStackTrace();
             return "error";
         }
+    }
+    public static String level1GroupAllNodesCpuUtilization(Long L1, String start){
+
+        String allNodesCpuUtilization = "";
+        if (L1 == 4295063622L){
+            for (String nodeName:zdjkL1AllNodeNames){
+                String nodeName_cpu = getCpuAvg(nodeName, start);
+                allNodesCpuUtilization += nodeName + ",";
+            }
         }
+        return allNodesCpuUtilization; // node1:0.55,node2:0.3,node3:21.5
+    }
+
 
 //    public static String getInterfaceThroughput(String interfaceAlias){
 //        try {

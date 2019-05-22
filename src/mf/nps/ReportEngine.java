@@ -32,7 +32,7 @@ public class ReportEngine extends HttpServlet {
         String end=req.getParameter("end");
 
         if (reportId == 1){ // CPU
-            String utilization = Util.level1GroupAllNodesCpuUtinization("test", start);
+            String utilization = Util.level1GroupAllNodesCpuUtilization(111111L, start);
             out.write(utilization);
             out.flush();
         }
