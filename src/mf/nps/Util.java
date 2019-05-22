@@ -21,6 +21,8 @@ public class Util {
     public static HashMap<Long ,List<Long>> L3Nodemap=new HashMap<>();
     public static HashMap<Long,String> groupNamemap=new HashMap<>();
     public static HashMap<Long,String> id_node_map=new HashMap<>();
+    public static HashMap<Long,String> id_nodeIP_map=new HashMap<>();
+
     public static HashSet<String> zdjkL1AllNodeNames = new HashSet<>();
 
     static {
@@ -88,6 +90,7 @@ public class Util {
 //            sb.append("]");
 //        return sb.toString();
 //    }
+
 
     public static String getInterfaceThroughput(String start,String end){
         HashMap<String,Bo> objmap=new HashMap<>();
@@ -259,6 +262,68 @@ public class Util {
         }
         return conn;
     }
+
+    public static HashMap<Long,String > getAllNodeInGroup1(Long groupid){
+        HashMap<Long,String > map=new HashMap<>();
+        List<Long> group2id=L1L2Mmap.get(groupid);
+        for(Long id:group2id){
+            List<Long> L3group=L2L3Map.get(id);
+            if(L3group!=null){
+               for(Long l3id:L3group){
+                   List<Long> nodes=L3Nodemap.get(l3id);
+                   if(nodes!=null){
+                       for(Long nodeid:nodes){
+                           map.put(nodeid,id_node_map.get(nodeid));
+                       }
+                   }
+
+               }
+            }
+        }
+
+
+        return map;
+
+
+
+    }
+
+    public static List<String> getAvail(HashMap<Long,String > map,String Start,String end){
+        List<String> list=new ArrayList<>();
+        StringBuilder sql=new StringBuilder();
+        sql.append("SELECT avg(f.[Node Availability (avg)]),f.[Node Short Name],f.[Node Name] FROM [DBA].f_Hour_ComponentMetrics f where  ");
+        int i=0;
+        Iterator<Long> iter=map.keySet().iterator();
+        while ((iter.hasNext())){
+            Long nodeid=iter.next();
+            if(i==0){
+                sql.append("(f.[Node ID]="+nodeid+" and f.[Component ID]="+nodeid+")");
+            }
+
+            else {
+                sql.append(" or (f.[Node ID]="+nodeid+" and f.[Component ID]="+nodeid+")");
+            }
+            i++;
+        }
+
+        sql.append(" and f.[Day]>='"+Start+"' and f.[Day]<'"+end+"' group by f.[Node Short Name],f.[Node ID],f.[Node Name] order by f.[Node Name]");
+        System.out.println(sql.toString());
+
+        try {
+            Connection connection = getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs =stmt.executeQuery(sql.toString());
+            while ( rs.next()){
+                list.add(rs.getDouble(1)+"#"+rs.getString(2)+"("+rs.getString(3)+")");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
     public static Set<String> initL1AllNodeNames(Long L1GroupId){
         System.out.println("L1GroupId: " + L1GroupId);
         Set L2Ids = new HashSet(L1L2Mmap.get(L1GroupId));
@@ -268,6 +333,8 @@ public class Util {
         while(it.hasNext()){
             Long l2id = it.next();
             List<Long> l2id_children = L2L3Map.get(l2id);
+
+            if(l2id_children!=null)
             L3Ids.addAll(l2id_children);
         }
         System.out.println("L3Ids: " + L3Ids.toString());
@@ -402,10 +469,11 @@ public class Util {
 //                ParentChildgroup.add(parent+"@"+child);
                 childParent.put(child,parent);
             }
-            rs= stmt.executeQuery("select id ,name from nms_node");
+            rs= stmt.executeQuery("select id ,name,long_name from nms_node");
             while ( rs.next() ) {
 
                 id_node_map.put(rs.getLong(1),rs.getString(2));
+                id_nodeIP_map.put(rs.getLong(1),rs.getString(3));
             }
             rs.close();
             stmt.close();
