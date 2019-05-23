@@ -24,8 +24,11 @@
       <root url="jar://C:/Tomcat 9.0/lib/tomcat-util.jar!/" />
       <root url="jar://C:/Tomcat 9.0/lib/tomcat-websocket.jar!/" />
       <root url="jar://C:/Tomcat 9.0/lib/websocket-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../jconn4.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
   </library>
 </component>

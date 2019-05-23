@@ -2,6 +2,7 @@ package mf.nps;
 
 import com.sun.org.apache.bcel.internal.generic.L2I;
 //import com.sybase.jdbcx.EedInfo;
+import com.sun.org.apache.xpath.internal.axes.HasPositionalPredChecker;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import javax.naming.NamingException;
@@ -10,6 +11,8 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
 
 public class Util {
     public static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -324,77 +327,52 @@ public class Util {
         return list;
 
     }
-    public static Set<String> initL1AllNodeNames(Long L1GroupId){
-        System.out.println("L1GroupId: " + L1GroupId);
-        Set L2Ids = new HashSet(L1L2Mmap.get(L1GroupId));
-        System.out.println("L2Ids: " + L2Ids.toString());
-        HashSet<Long> L3Ids= new HashSet<>();
-        Iterator<Long> it = L2Ids.iterator();
-        while(it.hasNext()){
-            Long l2id = it.next();
-            List<Long> l2id_children = L2L3Map.get(l2id);
-
-            if(l2id_children!=null)
-            L3Ids.addAll(l2id_children);
-        }
-        System.out.println("L3Ids: " + L3Ids.toString());
-        HashSet<Long> allNodeIds = new HashSet<>();
-        Iterator<Long> it_l3 = L3Ids.iterator();
-        while(it_l3.hasNext()) {
-            Long l3id = it_l3.next();
-            System.out.println("Tyring to get node ids for " + l3id.toString());
-            Set l3idWithNode = L3Nodemap.keySet();
-            if (l3idWithNode.contains(l3id)){
-                List<Long> l3id_children = L3Nodemap.get(l3id);
-                System.out.println("Node ids for " + l3id.toString() + ": " + l3id_children.toString());
-                allNodeIds.addAll(l3id_children);
-                System.out.println("allNodeIds now is :" + allNodeIds.toString());
-            }
-        }
-        System.out.println("allNodeIds: " + allNodeIds.toString());
-        HashSet<String> allNodeNames = new HashSet<>();
-        Iterator<Long> it_nodeIds = allNodeIds.iterator();
-        while(it_nodeIds.hasNext()) {
-            Long nodeId = it_nodeIds.next();
-            String nodeName = id_node_map.get(nodeId);
-            allNodeNames.add(nodeName);
-        }
+    public static void initL1AllNodeNames(Long L1GroupId){
+        HashMap<Long, String> nodeid_name = getAllNodeInGroup1(L1GroupId);
+        HashSet<String> nodeNames = new HashSet(nodeid_name.values());
         if (L1GroupId == 4295063622L){
-            zdjkL1AllNodeNames = allNodeNames;
+            Util.zdjkL1AllNodeNames = nodeNames;
+            System.out.println("ZDJK All Node Names: " + Util.zdjkL1AllNodeNames.toString());
         }
-        System.out.println("All nodes: " + allNodeNames.toString());
 
-        return allNodeNames;
     }
-    public static String getCpuAvg(String nodeName, String start){
-        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Name]="+"'"+nodeName+"'"+" and f.[CPU 1min Utilization (avg)]!=null and f.Day>='"+start+"'";
+    public static JSONObject getCpuAvg(String nodeName, String start, Connection connection){
+        String sql = "select  avg(f.[CPU 1min Utilization (avg)]) from [DBA].fv1_Day_ComponentMetrics f where f.[Component Type]='CPU' and f.[Node Short Name]="+"'"+nodeName+"'"+" and f.[CPU 1min Utilization (avg)]!=null and f.Day>='"+start+"'";
+        System.out.println(sql);
         try{
-            String utilization = null;
-            Connection connection = getConnection();
+            JSONObject cpuDataJSONObj = new JSONObject();
             Statement stmt = connection.createStatement();
-            ResultSet rs = null;
-
-            rs=stmt.executeQuery(sql);
-            while ( rs.next()){
+            ResultSet rs =stmt.executeQuery(sql);
+            while ( rs.next()){ //1 column in rs
                 Float cpuUtilization = rs.getFloat(1);
-                utilization = cpuUtilization.toString();
+                cpuDataJSONObj.put("nodeName", nodeName);
+                cpuDataJSONObj.put("cpuAvg", cpuUtilization);
+                System.out.println(String.format("SQl rs: " + cpuDataJSONObj.toJSONString()));
             }
-            return nodeName + ":"+utilization.toString();
+            return cpuDataJSONObj;
         }catch (Exception e){
             e.printStackTrace();
-            return "error";
+            return null;
         }
     }
     public static String level1GroupAllNodesCpuUtilization(Long L1, String start){
-
-        String allNodesCpuUtilization = "";
-        if (L1 == 4295063622L){
-            for (String nodeName:zdjkL1AllNodeNames){
-                String nodeName_cpu = getCpuAvg(nodeName, start);
-                allNodesCpuUtilization += nodeName + ",";
+        //return "[{\"nodeName\":\"BJ-ZB-CS-IRF\",\"cpuAvg\":0.028054412},{\"nodeName\":\"BJ_ZB_F17_HJ\",\"cpuAvg\":0.020868752},{\"nodeName\":\"BJ-ZB-F11-POE\",\"cpuAvg\":0.0},{\"nodeName\":\"BJ_ZB_F16_4\",\"cpuAvg\":0.0}]";
+        JSONArray allNodesCpuAvgJSON = new JSONArray();
+        System.out.println("Start to getting cpu avg for all nodes under group id " + L1.toString() + "and start : " + start);
+        try{
+            Connection connection = getConnection();
+            if (L1 == 4295063622L){
+                System.out.println("--------IN----------");
+                for (String nodeName:zdjkL1AllNodeNames){
+                    JSONObject nodeCpuAvg = getCpuAvg(nodeName, start, connection);
+                    allNodesCpuAvgJSON.add(nodeCpuAvg);
+                }
             }
+            connection.close();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return allNodesCpuUtilization; // node1:0.55,node2:0.3,node3:21.5
+       return allNodesCpuAvgJSON.toJSONString();
     }
 
 
@@ -491,7 +469,7 @@ public class Util {
             stmt.close();
             conn.close();
 //            System.out.println("zhongidanjiankongL1-L2: " + L1L2Mmap.get(4295063622L)); //zhongdian jiankong
-//            System.out.println("L1L2Map: " + L1L2Mmap.toString());
+            System.out.println("L1L2Map: " + L1L2Mmap.toString());
 //            System.out.println("l2l3map: " + L2L3Map.toString());
 //            System.out.println(("L3Nodemap: "+ L3Nodemap.toString()));
 //            System.out.println(("id_node_map: "+ id_node_map.toString()));

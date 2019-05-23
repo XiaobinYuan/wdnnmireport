@@ -19,7 +19,7 @@
     <script src="js/exporting.js"></script>
     <script src="js/oldie.js"></script>
     <script type="text/javascript">
-        $.get("initMap");
+        // $.get("initMap");
         $(function(){ 
             //当DOM准备好时创建一个jstree实例
             $('#jstree').jstree({
@@ -36,6 +36,11 @@
 					"text":"重点监控设备内存使用率"
 				
 				},
+                {
+                    "id":"3",
+                    "parent":"#",
+                    "text":"重点监控设备可用性"
+                },
 				{
 					"id":"5",
 					"parent":"#",

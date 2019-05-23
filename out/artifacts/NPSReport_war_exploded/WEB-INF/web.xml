@@ -6,12 +6,12 @@
            version="4.0">
 
     <servlet>
-        <servlet-name>initMap</servlet-name>
-        <servlet-class>mf.nps.MapInitiator</servlet-class>
+        <servlet-name>cpuAvg</servlet-name>
+        <servlet-class>mf.nps.CpuUtilizationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>initMap</servlet-name>
-        <url-pattern>/initMap</url-pattern>
+        <servlet-name>cpuAvg</servlet-name>
+        <url-pattern>/cpuAvg</url-pattern>
     </servlet-mapping>
 
 

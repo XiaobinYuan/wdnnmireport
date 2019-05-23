@@ -11,6 +11,9 @@
 	    <script src="js/highcharts.js"></script>
         <script src="js/exporting.js"></script>
         <script src="js/oldie.js"></script>
+        <link rel="stylesheet" href="js/dist/bootstrap-table.css">
+        <!--script src="bootstrap.min.js"></script-->
+        <script src="js/dist/bootstrap-table.js"></script>
     </head>
     <body>
     <select id="time" onchange="changetime();">
@@ -22,6 +25,10 @@
 		<div id="container1" style="min-width:400px;height:400px"></div>
 		<div id="container2" style="min-width:400px;height:400px"></div>
 		<div id="container3" style="min-width:400px;height:400px"></div>
+        <div id="cpu" style="min-width:400px;height:400px">
+            <table id="cpu_table" class="table table-hover">CPU</table>
+        </div>
+
         <script>
 function setReportid(id){
     document.getElementById("reportid").value=id;
@@ -55,9 +62,30 @@ function changetime(){
 
 function chart1(strDate, end) { //CPU
     //alert(strDate);
-    $.get("reportEngine?reportid=1&start="+strDate+"&end="+end, function(data){
-    alert(data);
-});
+    // $.get("cpuAvg?level1GroupId=4295063622&start=" + strDate, function (data) {
+    //     alert(data)
+    // });
+    $('#cpu_table').bootstrapTable({
+        url: "cpuAvg?level1GroupId=4295063622&start="+strDate,
+        queryParams: "queryParams",
+        toolbar: "#toolbar",
+        sidePagination: "true",
+        striped: true, // 是否显示行间隔色
+        search : true,
+        uniqueId: "nodeName",
+        pageSize: "20",
+        pagination: true, // 是否分页
+        sortable: true, // 是否启用排序
+        columns: [{
+            field: 'nodeName',
+            title: '节点名'
+        },
+            {
+                field: 'cpuAvg',
+                title: 'CPU利用率'
+            },
+        ]
+    })
 }
 
 function chart5(strDate,end){
