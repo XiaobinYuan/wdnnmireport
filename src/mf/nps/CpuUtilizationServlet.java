@@ -26,8 +26,15 @@ public class CpuUtilizationServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         String start=req.getParameter("start");
-        //String end=req.getParameter("end");
-        String utilization = Util.level1GroupAllNodesCpuUtinization("test", start);
+        String id_string = req.getParameter("level1GroupId");
+        Long id_Long = Long.parseLong(id_string);
+        System.out.print("printing out gouprid and start pass by jquery:");
+        System.out.println(id_Long);
+        System.out.println(start);
+        if (Util.zdjkL1AllNodeNames.isEmpty()){
+            Util.initL1AllNodeNames(id_Long);
+        }
+        String utilization = Util.level1GroupAllNodesCpuUtilization(id_Long, start);
         out.write(utilization);
         out.flush();
         out.close();

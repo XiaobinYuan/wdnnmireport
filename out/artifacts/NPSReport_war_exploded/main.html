@@ -12,7 +12,7 @@
     <script src="js/highcharts.js"></script>
     <script src="js/exporting.js"></script>
     <script src="js/oldie.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"-->
     <!--script src="bootstrap.min.js"></script-->
     <script src="js/dist/bootstrap-table.js"></script>
 </head>
@@ -22,13 +22,14 @@
     <option value ="-30">过去一个月</option>
     <!--<option value="custom">自定义</option>-->
 </select>
-<table id="cpu_table" class="table table-hover">CPU</table>
 
 <div id="container" style="min-width:400px;height:400px"></div>
 <div id="container1" style="min-width:400px;height:400px"></div>
 <div id="container2" style="min-width:400px;height:400px"></div>
 <div id="container3" style="min-width:400px;height:400px"></div>
-
+<div id="cpu" style="min-width:400px;height:400px">
+    <table id="cpu_table" class="table table-hover">CPU</table>
+</div>
 
 <script>
     function setReportid(id){
@@ -62,7 +63,10 @@
     }
 
     function chart1(strDate, end) { //CPU
-
+        //alert(strDate);
+        // $.get("cpuAvg?level1GroupId=4295063622&start=" + strDate, function (data) {
+        //     alert(data)
+        // });
         $('#cpu_table').bootstrapTable({
             url: "cpuAvg?level1GroupId=4295063622&start="+strDate,
             queryParams: "queryParams",

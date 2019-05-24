@@ -24,6 +24,7 @@
       <root url="jar://C:/Tomcat 9.0/lib/tomcat-util.jar!/" />
       <root url="jar://C:/Tomcat 9.0/lib/tomcat-websocket.jar!/" />
       <root url="jar://C:/Tomcat 9.0/lib/websocket-api.jar!/" />
+      <root url="jar://C:/Tomcat 9.0/lib/json-simple-1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

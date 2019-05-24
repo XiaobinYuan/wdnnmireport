@@ -5,8 +5,14 @@
 		  http://java.sun.com/xml/ns/javaee/web-app_4_0.xsd"
            version="4.0">
 
-
-
+    <servlet>
+        <servlet-name>cpuAvg</servlet-name>
+        <servlet-class>mf.nps.CpuUtilizationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cpuAvg</servlet-name>
+        <url-pattern>/cpuAvg</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>reportEngine</servlet-name>
