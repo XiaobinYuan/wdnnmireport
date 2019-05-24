@@ -28,14 +28,36 @@ public class AvailServlet extends HttpServlet {
 
         String start=req.getParameter("start");
         String end=req.getParameter("end");
-        List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
-        StringBuilder sb=new StringBuilder();
-        for(String str:list){
-            sb.append(str+"@");
+        String reportid=req.getParameter("reportid");
+        String result=Util.cache.get(reportid+"@"+start+end);
+        System.out.println(start+":"+end+""+reportid);
+
+        if(result!=null){
+            System.out.println("get data from cache...");
+            out.write(result);
+            out.flush();
+            out.close();
+
+        }else {
+            System.out.println("get data from db...");
+
+            List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+            StringBuilder sb=new StringBuilder();
+            sb.append("[");
+            for(String str:list){
+                String[] strs=str.split("#");
+                sb.append("{\"id\":\""+strs[1]+"\",");
+                sb.append("\"name\": "+strs[0]);
+                sb.append("},");
+            }
+            sb.append("]");
+            System.out.println(sb.toString().replaceAll("},]","}]"));
+            Util.cache.put(reportid+"@"+start+end,sb.toString().replaceAll("},]","}]"));
+            out.write(sb.toString().replaceAll("},]","}]"));
+            out.flush();
+            out.close();
         }
-        out.write(sb.toString());
-        out.flush();
-        out.close();
+
 
     }
 

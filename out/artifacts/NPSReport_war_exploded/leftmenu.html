@@ -8,75 +8,83 @@
 
 </head>
 <body>
-    <!-- 设置容器元素 -->
-    <div id="jstree"></div>
-    <link rel="stylesheet" href="js/style.min.css" />
-    <!-- jquery.js -->
-    <script src="js/jquery.min.js"></script>
-    <!-- jstree js核心文件 -->
-    <script src="js/jstree.min.js"></script>
-	<script src="js/highcharts.js"></script>
-    <script src="js/exporting.js"></script>
-    <script src="js/oldie.js"></script>
-    <script type="text/javascript">
-        $.get("initMap");
-        $(function(){ 
-            //当DOM准备好时创建一个jstree实例
-            $('#jstree').jstree({
-                //core 存储核心的所有默认值
-                'core' : {'data' : [
-				{
-					"id":"1",
-					"parent":"#",
-					"text":"重点监控设备CPU使用率"
-				},
-				{
-					"id":"2",
-					"parent":"#",
-					"text":"重点监控设备内存使用率"
-				
-				},
-				{
-					"id":"5",
-					"parent":"#",
-					"text":"北京廊坊裸光纤A带宽使用情况"
-				
-				}
-				]}
-            }).bind("select_node.jstree", function(event, data) {
-			var id =getSelectNodeId();
-			//var date = new Date();
+<!-- 设置容器元素 -->
+<div id="jstree"></div>
+<link rel="stylesheet" href="js/style.min.css" />
+<!-- jquery.js -->
+<script src="js/jquery.min.js"></script>
+<!-- jstree js核心文件 -->
+<script src="js/jstree.min.js"></script>
+<script src="js/highcharts.js"></script>
+<script src="js/exporting.js"></script>
+<script src="js/oldie.js"></script>
+<script type="text/javascript">
+    // $.get("initMap");
+    $(function(){
+        //当DOM准备好时创建一个jstree实例
+        $('#jstree').jstree({
+            //core 存储核心的所有默认值
+            'core' : {'data' : [
+                    {
+                        "id":"1",
+                        "parent":"#",
+                        "text":"重点监控设备CPU使用率"
+                    },
+                    {
+                        "id":"2",
+                        "parent":"#",
+                        "text":"重点监控设备内存使用率"
 
-			var strDate = GetDateStr(-7);
-			var end = GetDateStr(0);
-			if (id == 1){
-			    self.parent.frames['main'].setReportid(id);
+                    },
+                    {
+                        "id":"3",
+                        "parent":"#",
+                        "text":"重点监控设备可用性"
+                    },
+                    {
+                        "id":"5",
+                        "parent":"#",
+                        "text":"北京廊坊裸光纤A带宽使用情况"
+
+                    }
+                ]}
+        }).bind("select_node.jstree", function(event, data) {
+            var id =getSelectNodeId();
+            //var date = new Date();
+
+            var strDate = GetDateStr(-7);
+            var end = GetDateStr(0);
+            if (id == 1){
+                self.parent.frames['main'].setReportid(id);
                 self.parent.frames['main'].chart1(strDate, end);
             }
-			else if(id==5){
-			    self.parent.frames['main'].setReportid(id);
-				self.parent.frames['main'].chart5(strDate,end);
+            else if(id==5){
+                self.parent.frames['main'].setReportid(id);
+                self.parent.frames['main'].chart5(strDate,end);
 
-			}
-			}); //end
-        });
+            }else if(id==3){
+                self.parent.frames['main'].setReportid(id);
+                self.parent.frames['main'].availTable(strDate,end,id);
+            }
+        }); //end
+    });
 
 
-function getSelectNodeId() {
-    var treeNode = $('#jstree').jstree(true).get_selected(true)[0]; //获取所有选中的节点对象
-    var nodeId = treeNode.original.id;
-    return nodeId;
+    function getSelectNodeId() {
+        var treeNode = $('#jstree').jstree(true).get_selected(true)[0]; //获取所有选中的节点对象
+        var nodeId = treeNode.original.id;
+        return nodeId;
 
-}
-function GetDateStr(AddDayCount) {
-    var dd = new Date();
-    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
-    var y = dd.getFullYear();
-    var m = (dd.getMonth()+1)<10?"0"+(dd.getMonth()+1):(dd.getMonth()+1);//获取当前月份的日期，不足10补0
-    var d = dd.getDate()<10?"0"+dd.getDate():dd.getDate();//获取当前几号，不足10补0
-    return y+"-"+m+"-"+d;
-}
+    }
+    function GetDateStr(AddDayCount) {
+        var dd = new Date();
+        dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期
+        var y = dd.getFullYear();
+        var m = (dd.getMonth()+1)<10?"0"+(dd.getMonth()+1):(dd.getMonth()+1);//获取当前月份的日期，不足10补0
+        var d = dd.getDate()<10?"0"+dd.getDate():dd.getDate();//获取当前几号，不足10补0
+        return y+"-"+m+"-"+d;
+    }
 
-    </script>
+</script>
 </body>
 </html>

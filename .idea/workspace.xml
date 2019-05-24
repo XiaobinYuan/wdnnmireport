@@ -7,11 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0de99ded-07c8-4d96-beff-f850785c3894" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/mf/nps/AvailServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap-table.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/js/jquery-3.4.1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/classes/mf/nps/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/classes/mf/nps/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/classes/mf/nps/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/classes/mf/nps/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/leftmenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/leftmenu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/NPSReport_war_exploded/main.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mf/nps/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/nps/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NPSReport/mf/nps/AvailServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NPSReport/mf/nps/AvailServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/NPSReport/mf/nps/Util.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/NPSReport/mf/nps/Util.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mf/nps/AvailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/nps/AvailServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mf/nps/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mf/nps/Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/leftmenu.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/leftmenu.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.html" afterDir="false" />
     </list>
@@ -27,11 +39,78 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/main.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="321" column="35" selection-start-line="321" selection-end-line="322" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#1302#1642#0" />
+                <element signature="e#1668#2177#0" />
+                <element signature="e#2415#3033#0" />
+                <element signature="e#3074#9535#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-15">
+              <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mf/nps/ReportEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+            <state relative-caret-position="172">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="38" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/leftmenu.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="717">
+              <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mf/nps/AvailServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="618">
+              <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -42,71 +121,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mf/nps/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2210">
-              <caret line="479" column="25" lean-forward="true" selection-start-line="479" selection-start-column="25" selection-end-line="479" selection-end-column="25" />
+            <state relative-caret-position="261">
+              <caret line="309" column="51" selection-start-line="309" selection-start-column="50" selection-end-line="309" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="initializer##0;class#Util#0" />
-                <element signature="e#1801#1841#0" />
-                <element signature="e#3373#6864#0" />
-                <element signature="e#6866#6904#0" />
-                <element signature="e#6866#10257#0" />
-                <element signature="e#10361#10919#0" />
-                <element signature="e#11085#12323#0" />
-                <element signature="e#11522#13362#0" />
-                <element signature="e#14173#15026#0" />
-                <element signature="e#12925#12998#0" />
+                <element signature="e#16017#19022#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="47" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/main.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="154" column="11" selection-start-line="154" selection-end-line="199" />
-              <folding>
-                <element signature="n#select#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="e#1064#1376#0" />
-                <element signature="e#1398#1847#0" />
-                <element signature="e#1881#1886#0" />
-                <element signature="e#2080#3040#0" />
-                <element signature="e#3082#4043#0" />
-                <element signature="e#4084#5045#0" />
-                <element signature="e#5086#6047#0" />
-                <element signature="e#2811#3984#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/leftmenu.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="41" column="37" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="37" />
-              <folding>
-                <element signature="n#head#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mf/nps/AvailServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -114,8 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mf/nps/Test.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="105" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="105" />
+            <state relative-caret-position="442">
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -158,11 +179,13 @@
         <option value="$PROJECT_DIR$/src/mf/nps/Main.java" />
         <option value="$PROJECT_DIR$/src/mf/nps/ReportEngine.java" />
         <option value="$PROJECT_DIR$/src/mf/nps/CpuUtilizationServlet.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/mf/nps/MapInitiator.java" />
-        <option value="$PROJECT_DIR$/web/leftmenu.html" />
         <option value="$PROJECT_DIR$/src/mf/nps/Test.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/web/leftmenu.html" />
         <option value="$PROJECT_DIR$/src/mf/nps/AvailServlet.java" />
+        <option value="$PROJECT_DIR$/web/2.html" />
+        <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/web/main.html" />
         <option value="$PROJECT_DIR$/src/mf/nps/Util.java" />
       </list>
@@ -183,11 +206,11 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="258" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="839" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1330" />
+    <option name="height" value="603" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -211,6 +234,12 @@
             <path>
               <item name="NPSReport" type="b2602c69:ProjectViewProjectNode" />
               <item name="NPSReport" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="nps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NPSReport" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NPSReport" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -218,13 +247,6 @@
               <item name="NPSReport" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NPSReport" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NPSReport" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NPSReport" type="b2602c69:ProjectViewProjectNode" />
@@ -243,7 +265,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/js" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
@@ -256,8 +278,8 @@
       <recent name="mf.nps" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\taob\NPSReport\web" />
       <recent name="E:\taob\NPSReport\web\js" />
+      <recent name="E:\taob\NPSReport\web" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -272,7 +294,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.17">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="mf.nps.Main" />
       <module name="NPSReport" />
@@ -400,11 +422,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112934000" />
+    <option name="totallyTimeSpent" value="136012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1348" height="621" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.9157667" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" sideWeight="0.08423326" side_tool="true" visible="true" weight="0.27096274" />
@@ -416,8 +437,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.4859611" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.71058315" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.77321815" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.70963365" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -448,14 +469,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/mf/nps/Util.java</url>
-          <line>50</line>
+          <line>51</line>
           <properties />
           <option name="timeStamp" value="10" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/web/leftmenu.html</url>
-          <line>22</line>
-          <option name="timeStamp" value="8" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/mf/nps/Util.java</url>
+          <line>324</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/mf/nps/Util.java</url>
+          <line>292</line>
+          <properties />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -590,13 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mf/nps/MapInitiator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="223">
@@ -618,16 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/leftmenu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="41" column="37" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="37" />
-          <folding>
-            <element signature="n#head#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/util/AbstractCollection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -635,72 +646,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/main.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="154" column="11" selection-start-line="154" selection-end-line="199" />
-          <folding>
-            <element signature="n#select#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="e#1064#1376#0" />
-            <element signature="e#1398#1847#0" />
-            <element signature="e#1881#1886#0" />
-            <element signature="e#2080#3040#0" />
-            <element signature="e#3082#4043#0" />
-            <element signature="e#4084#5045#0" />
-            <element signature="e#5086#6047#0" />
-            <element signature="e#2811#3984#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mf/nps/Test.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="105" lean-forward="true" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="105" />
+        <state relative-caret-position="442">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mf/nps/ReportEngine.java">
+    <entry file="file://$PROJECT_DIR$/web/js/jquery-3.4.1.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/bootstrap-table.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/bootstrap-table.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="39" column="20" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-323">
+          <caret line="4" column="886" selection-start-line="4" selection-start-column="886" selection-end-line="4" selection-end-column="886" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/dist/bootstrap-table.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/leftmenu.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="717">
+          <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mf/nps/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2210">
-          <caret line="479" column="25" lean-forward="true" selection-start-line="479" selection-start-column="25" selection-end-line="479" selection-end-column="25" />
+        <state relative-caret-position="261">
+          <caret line="309" column="51" selection-start-line="309" selection-start-column="50" selection-end-line="309" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="initializer##0;class#Util#0" />
-            <element signature="e#1801#1841#0" />
-            <element signature="e#3373#6864#0" />
-            <element signature="e#6866#6904#0" />
-            <element signature="e#6866#10257#0" />
-            <element signature="e#10361#10919#0" />
-            <element signature="e#11085#12323#0" />
-            <element signature="e#11522#13362#0" />
-            <element signature="e#14173#15026#0" />
-            <element signature="e#12925#12998#0" />
+            <element signature="e#16017#19022#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mf/nps/AvailServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="618">
+          <caret line="52" column="27" lean-forward="true" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="47" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="47" />
+        <state relative-caret-position="-15">
+          <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mf/nps/AvailServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/mf/nps/ReportEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+        <state relative-caret-position="172">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="321" column="35" selection-start-line="321" selection-end-line="322" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#1302#1642#0" />
+            <element signature="e#1668#2177#0" />
+            <element signature="e#2415#3033#0" />
+            <element signature="e#3074#9535#0" />
+          </folding>
         </state>
       </provider>
     </entry>
