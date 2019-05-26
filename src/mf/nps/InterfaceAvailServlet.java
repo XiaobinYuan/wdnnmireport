@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 
-public class AvailServlet extends HttpServlet {
+public class InterfaceAvailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
     }
@@ -25,19 +25,25 @@ public class AvailServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter out = resp.getWriter();
-        if(Util.cache.size()>50)
-            Util.cache.clear();
+
         String start=req.getParameter("start");
         String end=req.getParameter("end");
         String reportid=req.getParameter("reportid");
         String result=Util.cache.get(reportid+"@"+start+end);
+
+        if(Util.cache.size()>50)
+            Util.cache.clear();
         if(result!=null){
             System.out.println(reportid+":get data from cache...");
             out.write(result);
             out.flush();
             out.close();
+
+
         }else {
-            List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+            System.out.println(reportid+":get data from db...");
+
+            List<String> list =Util.getZDJKIterfaceAvail(Util.getAllNodeInGroup1(4295063622l),start,end);
             StringBuilder sb=new StringBuilder();
             sb.append("[");
             for(String str:list){

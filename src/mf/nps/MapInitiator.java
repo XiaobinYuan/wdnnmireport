@@ -19,7 +19,6 @@ public class MapInitiator extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Util.initMaps();
         Util.initL1AllNodeNames(4295063622L);
         PrintWriter out = resp.getWriter();
         out.write("Util.initMaps()");

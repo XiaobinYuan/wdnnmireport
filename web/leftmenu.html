@@ -28,13 +28,12 @@
                     {
                         "id":"1",
                         "parent":"#",
-                        "text":"重点监控设备CPU使用率"
+                        "text":"重点监控设备CPU/Mem使用率"
                     },
                     {
                         "id":"2",
                         "parent":"#",
-                        "text":"重点监控设备内存使用率"
-
+                        "text":"全网设备可用性"
                     },
                     {
                         "id":"3",
@@ -42,31 +41,56 @@
                         "text":"重点监控设备可用性"
                     },
                     {
+                        "id":"4",
+                        "parent":"#",
+                        "text":"重点监控设备端口可用率"
+                    },
+                    {
                         "id":"5",
                         "parent":"#",
                         "text":"北京廊坊裸光纤A带宽使用情况"
+
+                    },
+                    {
+                        "id":"6",
+                        "parent":"#",
+                        "text":"北京廊坊互联网带宽使用率报表"
 
                     }
                 ]}
         }).bind("select_node.jstree", function(event, data) {
             var id =getSelectNodeId();
-            //var date = new Date();
-
             var strDate = GetDateStr(-7);
             var end = GetDateStr(0);
+
             if (id == 1){
+                self.parent.frames['main'].setDefaultTime();
                 self.parent.frames['main'].setReportid(id);
-                self.parent.frames['main'].chart1(strDate, end);
+                self.parent.frames['main'].cpuMemTable(strDate, end,id);
             }
             else if(id==5){
+                self.parent.frames['main'].setDefaultTime();
                 self.parent.frames['main'].setReportid(id);
-                self.parent.frames['main'].chart5(strDate,end);
+                self.parent.frames['main'].chart5(strDate,end,id);
 
             }else if(id==3){
+                self.parent.frames['main'].setDefaultTime();
                 self.parent.frames['main'].setReportid(id);
                 self.parent.frames['main'].availTable(strDate,end,id);
+            }else if(id==2){
+                self.parent.frames['main'].setDefaultTime();
+                self.parent.frames['main'].setReportid(id);
+                self.parent.frames['main'].allavailTable(strDate,end,id);
+            }else if(id==4){
+                self.parent.frames['main'].setDefaultTime();
+                self.parent.frames['main'].setReportid(id);
+                self.parent.frames['main'].InaterfacevailTable(strDate,end,id);
+            }else if(id==6){
+                self.parent.frames['main'].setDefaultTime();
+                self.parent.frames['main'].setReportid(id);
+                self.parent.frames['main'].broadband(strDate,end,id);
             }
-        }); //end
+        }); //endInaterfacevailTable
     });
 
 

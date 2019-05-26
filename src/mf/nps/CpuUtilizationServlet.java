@@ -13,10 +13,7 @@ public class CpuUtilizationServlet extends HttpServlet {
         doPost(req,resp);
     }
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +21,8 @@ public class CpuUtilizationServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter out = resp.getWriter();
-
+        if(Util.cache.size()>50)
+            Util.cache.clear();
         String start=req.getParameter("start");
         String id_string = req.getParameter("level1GroupId");
         Long id_Long = Long.parseLong(id_string);

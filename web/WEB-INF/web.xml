@@ -14,6 +14,16 @@
         <url-pattern>/cpuAvg</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>cpumem</servlet-name>
+        <servlet-class>mf.nps.CPUMemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>cpumem</servlet-name>
+        <url-pattern>/cpumem</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>reportEngine</servlet-name>
         <servlet-class>mf.nps.ReportEngine</servlet-class>
@@ -43,5 +53,36 @@
     <servlet-mapping>
         <servlet-name>availtabel</servlet-name>
         <url-pattern>/availtabel</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>allavailtabel</servlet-name>
+        <servlet-class>mf.nps.AllAvailServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>allavailtabel</servlet-name>
+        <url-pattern>/allavailtabel</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>interfaceAail</servlet-name>
+        <servlet-class>mf.nps.InterfaceAvailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>interfaceAail</servlet-name>
+        <url-pattern>/interfaceAail</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>throughputServlet</servlet-name>
+        <servlet-class>mf.nps.ThroughputServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>throughputServlet</servlet-name>
+        <url-pattern>/throughputServlet</url-pattern>
     </servlet-mapping>
 </web-app>

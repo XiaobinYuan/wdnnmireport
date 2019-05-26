@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 
 
-public class AvailServlet extends HttpServlet {
+public class CPUMemServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req,resp);
     }
@@ -25,29 +26,38 @@ public class AvailServlet extends HttpServlet {
         resp.setContentType("text/html;charset=utf-8");
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter out = resp.getWriter();
-        if(Util.cache.size()>50)
-            Util.cache.clear();
+
         String start=req.getParameter("start");
         String end=req.getParameter("end");
         String reportid=req.getParameter("reportid");
         String result=Util.cache.get(reportid+"@"+start+end);
+        if(Util.cache.size()>50)
+            Util.cache.clear();
         if(result!=null){
             System.out.println(reportid+":get data from cache...");
             out.write(result);
             out.flush();
             out.close();
+
         }else {
-            List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+            System.out.println(reportid+":get data from db...");
+            Map<String,String> list =Util.getCpuMem(Util.getAllNodeInGroup1(4295063622l),start,end);
             StringBuilder sb=new StringBuilder();
             sb.append("[");
-            for(String str:list){
-                String[] strs=str.split("#%#%");
-                sb.append("{\"id\":\""+strs[1]+"\",");
-                sb.append("\"name\": "+Util.sishewuru(Double.parseDouble(strs[0])));
+            for(Map.Entry<String,String> entry:list.entrySet()){
+                String name=entry.getKey();
+                String value=entry.getValue();
+                String cpu=value.split("#%#%")[0];
+                String mem=value.split("#%#%")[1];
+
+                sb.append("{\"host\":\""+name+"\",");
+                sb.append("\"cpu\": "+Util.sishewuru(Double.parseDouble(cpu)*100)+",");
+                sb.append("\"mem\": "+Util.sishewuru(Double.parseDouble(mem)*100));
+
                 sb.append("},");
+
             }
             sb.append("]");
-            System.out.println(sb.toString().replaceAll("},]","}]"));
             Util.cache.put(reportid+"@"+start+end,sb.toString().replaceAll("},]","}]"));
             out.write(sb.toString().replaceAll("},]","}]"));
             out.flush();

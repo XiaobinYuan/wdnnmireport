@@ -24,11 +24,19 @@ public class Test {
 //        HashSet<Long> ht = new HashSet<>();
 //        ht.addAll(list);
 //        System.out.print(ht.toString());
-        Util.initMaps();
+//        Util.initMaps();
 
 //        System.out.println(Util.initL1AllNodeNames(4301105449l));
 //        System.out.println(Util.getAllNodeInGroup1(4295063622l));
-        List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+//        List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+
+//        Util.getCpuMem(Util.getAllNodeInGroup1(4295063622l),"2019-05-18","2019-05-30");
+//        Util.getAllAvail("2019-05-23","2019-05-30");
+//        Util.getZDJKIterfaceAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+        String str = Util.getbroadband("2019-05-23","2019-05-30");
+
+        System.out.println(str);
+
 
     }
 }

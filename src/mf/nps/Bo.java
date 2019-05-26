@@ -6,6 +6,24 @@ public class Bo {
     private String name;
     private LinkedHashMap<String,Long> inmap=new LinkedHashMap<>();
     private LinkedHashMap<String,Long> out=new LinkedHashMap<>();
+    private LinkedHashMap<String,Double> inutil=new LinkedHashMap<>();
+    private LinkedHashMap<String,Double> oututil=new LinkedHashMap<>();
+
+    public LinkedHashMap<String, Double> getInutil() {
+        return inutil;
+    }
+
+    public void setInutil(LinkedHashMap<String, Double> inutil) {
+        this.inutil = inutil;
+    }
+
+    public LinkedHashMap<String, Double> getOututil() {
+        return oututil;
+    }
+
+    public void setOututil(LinkedHashMap<String, Double> oututil) {
+        this.oututil = oututil;
+    }
 
     public String getName() {
         return name;

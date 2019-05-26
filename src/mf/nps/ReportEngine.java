@@ -14,11 +14,6 @@ public class ReportEngine extends HttpServlet {
         doPost(req,resp);
     }
 
-    @Override
-    public void init() throws ServletException {
-        Util.initMaps();
-        super.init();
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -27,22 +22,15 @@ public class ReportEngine extends HttpServlet {
         resp.setHeader("Access-Control-Allow-Origin", "*");
         PrintWriter out = resp.getWriter();
 
-        int reportId = Integer.parseInt(req.getParameter("reportid"));
+//        int reportId = Integer.parseInt(req.getParameter("reportid"));
         String start=req.getParameter("start");
         String end=req.getParameter("end");
 
-        if (reportId == 1){ // CPU
-            String utilization = Util.level1GroupAllNodesCpuUtilization(4295063622L, start);
-            out.write(utilization);
-            out.flush();
-        }
-        else if( reportId == 5 ){ // Raw fiber
-            String str= Util.getInterfaceThroughput(start,end);
-//          System.out.println(str);
+            String str = Util.getInterfaceThroughput(start, end);
             out.write(str);
             out.flush();
-        }
-        out.close();
+            out.close();
+
     }
 
 }
