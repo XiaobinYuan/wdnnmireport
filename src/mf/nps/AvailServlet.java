@@ -31,13 +31,15 @@ public class AvailServlet extends HttpServlet {
         String end=req.getParameter("end");
         String reportid=req.getParameter("reportid");
         String result=Util.cache.get(reportid+"@"+start+end);
+        System.out.println(reportid+":"+start+":"+end);
+
         if(result!=null){
             System.out.println(reportid+":get data from cache...");
             out.write(result);
             out.flush();
             out.close();
         }else {
-            List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),"2019-05-10","2019-05-12");
+            List<String> list =Util.getAvail(Util.getAllNodeInGroup1(4295063622l),start,end);
             StringBuilder sb=new StringBuilder();
             sb.append("[");
             for(String str:list){

@@ -1,7 +1,7 @@
 package mf.nps;
 
 import com.sun.org.apache.bcel.internal.generic.L2I;
-import com.sybase.jdbcx.EedInfo;
+//import com.sybase.jdbcx.EedInfo;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 
 import javax.naming.NamingException;

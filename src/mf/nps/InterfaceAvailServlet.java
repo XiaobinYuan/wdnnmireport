@@ -30,6 +30,7 @@ public class InterfaceAvailServlet extends HttpServlet {
         String end=req.getParameter("end");
         String reportid=req.getParameter("reportid");
         String result=Util.cache.get(reportid+"@"+start+end);
+        System.out.println(reportid+":"+start+":"+end);
 
         if(Util.cache.size()>50)
             Util.cache.clear();

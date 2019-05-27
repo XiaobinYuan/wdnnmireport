@@ -30,6 +30,7 @@ public class AllAvailServlet extends HttpServlet {
         String end=req.getParameter("end");
         String reportid=req.getParameter("reportid");
         String result=Util.cache.get(reportid+"@"+start+end);
+        System.out.println(reportid+":"+start+":"+end);
 
         if(result!=null){
             System.out.println(reportid+":get data from cache...");
