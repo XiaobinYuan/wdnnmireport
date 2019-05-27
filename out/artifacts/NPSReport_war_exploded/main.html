@@ -786,104 +786,18 @@
         var urlstr="";
         if(reportid==1){
 
-            $('#cpu_table').bootstrapTable({
-                queryParams: "queryParams",
-                toolbar: "#toolbar",
-                sidePagination: "true",
-                striped: true, // 是否显示行间隔色
-                search : true,
-                uniqueId: "host",
-                pageSize: "20",
-                pagination: true, // 是否分页
-                sortable: true, // 是否启用排序
-                columns: [{
-                    field: 'host',
-                    title: '节点名'
-                },
-                    {
-                        field: 'cpu',
-                        title: 'CPU%'
-                    },
-                    {
-                        field: 'mem',
-                        title: 'Memory%'
-                    },
-                ]
-            })
-
             urlstr="cpumem?start="+strDate+"&end="+end+"&reportid="+reportid;
         }else if(reportid==3){
             urlstr="availtabel?start="+strDate+"&end="+end+"&reportid="+reportid;
-            $('#avail_table').bootstrapTable({
-                // url: "availtabel?start="+strDate+"&end="+end+"&reportid="+reportid,
-                queryParams: "queryParams",
-                toolbar: "#toolbar",
-                sidePagination: "true",
-                striped: true, // 是否显示行间隔色
-                search : true,
-                uniqueId: "id",
-                pageSize: "20",
-                pagination: true, // 是否分页
-                sortable: true, // 是否启用排序
-                columns: [{
-                    field: 'id',
-                    title: '节点名'
-                },
-                    {
-                        field: 'name',
-                        title: '可用性'
-                    },
-                ]
-            })
+
         }else if(reportid==2){
-            $('#allavail_table').bootstrapTable({
-                // url: "allavailtabel?start="+strDate+"&end="+end+"&reportid="+reportid,
-                queryParams: "queryParams",
-                toolbar: "#toolbar",
-                sidePagination: "true",
-                striped: true, // 是否显示行间隔色
-                search : true,
-                uniqueId: "id",
-                pageSize: "20",
-                pagination: true, // 是否分页
-                sortable: true, // 是否启用排序
-                columns: [{
-                    field: 'id',
-                    title: '节点名'
-                },
-                    {
-                        field: 'name',
-                        title: '可用性'
-                    },
-                ]
-            })
+
             urlstr= "allavailtabel?start="+strDate+"&end="+end+"&reportid="+reportid;
 
         }else if(reportid==4){
             urlstr="interfaceAail?start="+strDate+"&end="+end+"&reportid="+reportid;
-            $('#interfaceavail_table').bootstrapTable({
-                // url: "interfaceAail?start="+strDate+"&end="+end+"&reportid="+reportid,
-                queryParams: "queryParams",
-                toolbar: "#toolbar",
-                sidePagination: "true",
-                striped: true, // 是否显示行间隔色
-                search : true,
-                uniqueId: "id",
-                pageSize: "20",
-                pagination: true, // 是否分页
-                sortable: true, // 是否启用排序
-                columns: [{
-                    field: 'id',
-                    title: '节点名'
-                },
-                    {
-                        field: 'name',
-                        title: '端口可用性'
-                    },
-                ]
-            })
-        }
 
+        }
 
         $.ajax({
             url: urlstr,
@@ -892,12 +806,99 @@
             data :'data',
             success : function(data){
                 if(reportid==1){
+                    $('#cpu_table').bootstrapTable({
+                        queryParams: "queryParams",
+                        toolbar: "#toolbar",
+                        sidePagination: "true",
+                        striped: true, // 是否显示行间隔色
+                        search : true,
+                        uniqueId: "host",
+                        pageSize: "20",
+                        pagination: true, // 是否分页
+                        sortable: true, // 是否启用排序
+                        columns: [{
+                            field: 'host',
+                            title: '节点名'
+                        },
+                            {
+                                field: 'cpu',
+                                title: 'CPU%'
+                            },
+                            {
+                                field: 'mem',
+                                title: 'Memory%'
+                            },
+                        ]
+                    })
                     $("#cpu_table").bootstrapTable('load',data);//刷新ds_table的数据
                 }else if(reportid==2){
-                    $("#avail_table").bootstrapTable('load',data);//刷新ds_table的数据
-                }else if(reportid==3){
+                    $('#allavail_table').bootstrapTable({
+                        // url: "allavailtabel?start="+strDate+"&end="+end+"&reportid="+reportid,
+                        queryParams: "queryParams",
+                        toolbar: "#toolbar",
+                        sidePagination: "true",
+                        striped: true, // 是否显示行间隔色
+                        search : true,
+                        uniqueId: "id",
+                        pageSize: "20",
+                        pagination: true, // 是否分页
+                        sortable: true, // 是否启用排序
+                        columns: [{
+                            field: 'id',
+                            title: '节点名'
+                        },
+                            {
+                                field: 'name',
+                                title: '可用性'
+                            },
+                        ]
+                    })
                     $("#allavail_table").bootstrapTable('load',data);//刷新ds_table的数据
+                }else if(reportid==3){
+                    $('#avail_table').bootstrapTable({
+                        // url: "availtabel?start="+strDate+"&end="+end+"&reportid="+reportid,
+                        queryParams: "queryParams",
+                        toolbar: "#toolbar",
+                        sidePagination: "true",
+                        striped: true, // 是否显示行间隔色
+                        search : true,
+                        uniqueId: "id",
+                        pageSize: "20",
+                        pagination: true, // 是否分页
+                        sortable: true, // 是否启用排序
+                        columns: [{
+                            field: 'id',
+                            title: '节点名'
+                        },
+                            {
+                                field: 'name',
+                                title: '可用性'
+                            },
+                        ]
+                    })
+                    $("#avail_table").bootstrapTable('load',data);//刷新ds_table的数据
                 }else if(reportid==4){
+                    $('#interfaceavail_table').bootstrapTable({
+                        // url: "interfaceAail?start="+strDate+"&end="+end+"&reportid="+reportid,
+                        queryParams: "queryParams",
+                        toolbar: "#toolbar",
+                        sidePagination: "true",
+                        striped: true, // 是否显示行间隔色
+                        search : true,
+                        uniqueId: "id",
+                        pageSize: "20",
+                        pagination: true, // 是否分页
+                        sortable: true, // 是否启用排序
+                        columns: [{
+                            field: 'id',
+                            title: '节点名'
+                        },
+                            {
+                                field: 'name',
+                                title: '端口可用性'
+                            },
+                        ]
+                    })
                     $("#interfaceavail_table").bootstrapTable('load',data);//刷新ds_table的数据
                 }
 
